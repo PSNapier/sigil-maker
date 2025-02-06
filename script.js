@@ -33,7 +33,10 @@ function drawSigil(numberArray) {
 		ctx.beginPath();
 		ctx.arc(p.x, p.y, 5, 0, Math.PI * 2);
 		ctx.fill();
-		ctx.fillText(i, p.x + 10, p.y); // Number labels
+		const spacing = 25;
+		const labelX = centerX + (radius + spacing) * Math.cos((i / pointsCount) * (Math.PI * 2)) - ctx.measureText(i).width / 2;
+		const labelY = centerY + (radius + spacing) * Math.sin((i / pointsCount) * (Math.PI * 2)) + 5;
+		ctx.fillText(i, labelX, labelY); // Number labels
 	});
 
 	// Draw connections
@@ -52,7 +55,7 @@ function drawSigil(numberArray) {
 function updateSigil() {
 	let text = '';
 
-	text = document.getElementById("inputText").value;
+	text = document.getElementById("inputText").value.toLowerCase();
 
 	let number = '';
 	for (let char of text) {
@@ -68,7 +71,7 @@ function updateSigil() {
 	}
 
 	document.getElementById("outputText").innerText = text;
-	document.getElementById("outputNumber").innerText = number;
+	document.getElementById("outputNumber").innerText = number || 'Begin typing to translate your text into a sigil...';
 	drawSigil(number.split('') || []);
 }
 updateSigil();
