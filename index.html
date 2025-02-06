@@ -8,10 +8,10 @@
 </head>
 
 <body class="flex flex-col items-center justify-center h-screen">
-	<input id="inputText" type="text" oninput="updateSigil()" class="border border-gray-800"></input>
-	<div><input id="inputRemoveDupes" type="checkbox" oninput="updateSigil()"></input> Remove Duplicate Characters</div>
+	<input id="inputText" type="text" oninput="updateSigil()" class="border border-gray-800 px-1"></input>
+	<div class="mb-2"><input id="inputRemoveDupes" type="checkbox" oninput="updateSigil()" checked></input> Remove Duplicate Characters</div>
 	<div id="outputText" class="hidden"></div>
-	<div id="outputNumber"></div>
+	<div id="outputNumber" class="text-xl"></div>
 	<canvas id="sigilCanvas" width="400" height="400"></canvas>
 
 	<script src="toolbox.js"></script>
